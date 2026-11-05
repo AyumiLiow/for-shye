@@ -355,6 +355,7 @@ footer .wrap{padding-block:28px 56px;display:flex;flex-wrap:wrap;gap:12px;justif
       <span class="mono">demo · lyric visualiser</span>
       <h3>alive</h3>
       <small>my most raw piece of work yet. still a demo, and i want it to stay that honest on stage.</small>
+      <a class="listen" data-link="alive" href="#">listen to demo</a>
     </article>
   </div>
 </section>
@@ -426,7 +427,7 @@ const MEDIA = {
   processVideo: { src: "", label: "how i write a song", hint: "60s · notes app to finished track" },
   liveVideo:    { src: "", label: "the live set plan",  hint: "60s · walk-through of the 3 songs" }
 };
-const LINKS = { danceTonight: "https://open.spotify.com/artist/2ND7OWbqX8jgIcN5pkdpfL", iDontHave: "https://open.spotify.com/artist/2ND7OWbqX8jgIcN5pkdpfL", alive: "https://www.youtube.com/@ayumiliow" };
+const LINKS = { danceTonight: "https://open.spotify.com/track/0tj92xhrzLZFMHrehtpYlh", iDontHave: "https://open.spotify.com/track/0aCTT39iruMj0KQOo3q8vy", alive: "https://drive.google.com/file/d/1iajeCCZlhJzE8qB-zaQZkwN527pa4QiX/view" };
 
 const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -441,7 +442,7 @@ document.querySelectorAll("[data-slot]").forEach(el => {
 });
 document.querySelectorAll("[data-link]").forEach(a => {
   const u = LINKS[a.dataset.link];
-  if (u) { a.href = u; a.target = "_blank"; a.rel = "noopener"; a.textContent = /youtube/.test(u) ? "watch on youtube" : "listen on spotify"; }
+  if (u) { a.href = u; a.target = "_blank"; a.rel = "noopener"; a.textContent = /drive\.google/.test(u) ? "listen to demo" : /youtube/.test(u) ? "watch on youtube" : "listen on spotify"; }
   else { a.classList.add("todo"); a.textContent = "link soon"; a.removeAttribute("href"); }
 });
 
